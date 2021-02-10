@@ -33,7 +33,7 @@
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/HPJM/use-boolean",
+  "homepage": "https://github.com/HPJM/react-use-boolean",
   "keywords": [
     "hooks",
     "react"
