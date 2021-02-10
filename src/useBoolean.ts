@@ -14,7 +14,7 @@ interface Action {
 
 type Reducer = (state: boolean, action: Action) => boolean;
 
-interface Actions {
+export interface UseBooleanActions {
   set: (value: boolean) => void;
   toggle: () => void;
   off: () => void;
@@ -37,9 +37,9 @@ const reducer = (state: boolean, action: Action) => {
   return state;
 };
 
-export const useBoolean = (initial = false): [boolean, Actions] => {
+export const useBoolean = (initial = false): [boolean, UseBooleanActions] => {
   const [state, dispatch] = useReducer<Reducer>(reducer, initial);
-  const actions: Actions = {
+  const actions: UseBooleanActions = {
     set: (value: boolean) => dispatch({ type: Types.SET, value }),
     toggle: () => dispatch({ type: Types.TOGGLE }),
     on: () => dispatch({ type: Types.ON }),
