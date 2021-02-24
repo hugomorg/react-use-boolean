@@ -2,6 +2,14 @@
 
 This is a simple hook to manage boolean state, useful for doing stuff like managing checkbox state, showing modals etc.
 
+## Installation
+
+`npm i react-use-boolean`
+
+or
+
+`yarn add react-use-boolean`
+
 ## Usage
 
 ```jsx
@@ -23,7 +31,7 @@ const YourComponent = () => {
 
 ## Reference
 
-```ts
+```js
 const [value, { on, off, toggle, set }] = useBoolean();
 ```
 
