@@ -1,18 +1,4 @@
-import { useReducer } from "react";
-
-enum Types {
-  SET,
-  TOGGLE,
-  ON,
-  OFF,
-}
-
-interface Action {
-  value?: boolean;
-  type: Types;
-}
-
-type Reducer = (state: boolean, action: Action) => boolean;
+import { useState } from "react";
 
 export interface UseBooleanActions {
   set: (value: boolean) => void;
@@ -21,30 +7,14 @@ export interface UseBooleanActions {
   on: () => void;
 }
 
-const reducer = (state: boolean, action: Action) => {
-  if (action.type === Types.SET) {
-    return action.value;
-  }
-  if (action.type === Types.TOGGLE) {
-    return !state;
-  }
-  if (action.type === Types.OFF) {
-    return false;
-  }
-  if (action.type === Types.ON) {
-    return true;
-  }
-  return state;
-};
-
 export const useBoolean = (initial = false): [boolean, UseBooleanActions] => {
-  const [state, dispatch] = useReducer<Reducer>(reducer, initial);
+  const [value, setValue] = useState<boolean>(initial);
   const actions: UseBooleanActions = {
-    set: (value: boolean) => dispatch({ type: Types.SET, value }),
-    toggle: () => dispatch({ type: Types.TOGGLE }),
-    on: () => dispatch({ type: Types.ON }),
-    off: () => dispatch({ type: Types.OFF }),
+    set: (value) => setValue(Boolean(value)),
+    toggle: () => setValue((value) => !value),
+    on: () => setValue(true),
+    off: () => setValue(false),
   };
 
-  return [state, actions];
+  return [value, actions];
 };
