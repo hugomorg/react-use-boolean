@@ -1,6 +1,6 @@
 {
   "name": "react-use-boolean",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React hook for changing booleans",
   "main": "dist/index.js",
   "scripts": {
